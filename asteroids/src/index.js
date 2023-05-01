@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Webpack is working!")
 
     const MovingObject = require("./moving_object.js");
+    const Util = require("./util.js");
 
     const canvas = document.getElementById("game-canvas");
     const ctx = canvas.getContext("2d");
@@ -20,4 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // console.log(mobject)
 
     // window.MovingObject = MovingObject;
+    window.Vector = Util.randomVec
 });
