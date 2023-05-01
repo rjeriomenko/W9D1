@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const MovingObject = require("./moving_object.js");
     // const Util = require("./util.js");
     const Asteroid = require("./asteroid.js");
+    const Game = require("./game.js");
     
     const canvas = document.getElementById("game-canvas");
     const ctx = canvas.getContext("2d");
