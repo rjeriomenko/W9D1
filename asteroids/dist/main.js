@@ -9,13 +9,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/asteroid.js":
+/*!*************************!*\
+  !*** ./src/asteroid.js ***!
+  \*************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\nclass Asteroid extends MovingObject {\n    static BASESPEED = 5;\n    static MORESPEED = 2;\n    static COLOR = \"brown\";\n    static RADIUS = 25;\n    constructor(pos) {\n        let movObj = {\n            color: Asteroid.COLOR,\n            radius: Asteroid.RADIUS,\n            vel: Util.scale(Util.randomVec(Asteroid.BASESPEED), Asteroid.MORESPEED),\n            pos: pos\n        }\n        super(movObj)\n    }\n\n}\n\nmodule.exports = Asteroid\n\n\n//# sourceURL=webpack://asteroids/./src/asteroid.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("// import MovingObject from \"./moving_object.js\";\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    console.log(\"Webpack is working!\")\n\n    const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n    const Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\n    const canvas = document.getElementById(\"game-canvas\");\n    const ctx = canvas.getContext(\"2d\");\n\n\n//////TESTING CODE\n    let mobject = new MovingObject({\n        pos: [30, 30],\n        vel: [10, 10],\n        radius: 5,\n        color: \"#00FF00\"\n    })\n    mobject.draw(ctx)\n    mobject.move()\n    // console.log(mobject)\n\n    // window.MovingObject = MovingObject;\n    window.Vector = Util.randomVec\n});\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
+eval("// import MovingObject from \"./moving_object.js\";\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    console.log(\"Webpack is working!\")\n\n    const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n    // const Util = require(\"./util.js\");\n    const Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\n    \n    const canvas = document.getElementById(\"game-canvas\");\n    const ctx = canvas.getContext(\"2d\");\n\n\n//////TESTING CODE\n    let mobject = new MovingObject({\n        pos: [30, 30],\n        vel: [10, 10],\n        radius: 5,\n        color: \"#00FF00\"\n    })\n    mobject.draw(ctx)\n    mobject.move()\n    // console.log(mobject)\n\n    // window.MovingObject = MovingObject;\n    // window.Vector = Util.randomVec\n    window.Asteroid = Asteroid;\n});\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
 
 /***/ }),
 
@@ -33,9 +43,9 @@ eval("class MovingObject {\n    constructor(obj) {\n        this.pos = obj.pos;\
 /*!*********************!*\
   !*** ./src/util.js ***!
   \*********************/
-/***/ (() => {
+/***/ ((module) => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (1:7)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n> export randomVec(length) {\\n|     const deg = 2 * Math.PI * Math.random();\\n|     return scale([Math.sin(deg), Math.cos(deg)], length);\");\n\n//# sourceURL=webpack://asteroids/./src/util.js?");
+eval("function randomVec(length) {\n    const deg = 2 * Math.PI * Math.random();\n    return scale([Math.sin(deg), Math.cos(deg)], length);\n  }\n  \n  // Scale the length of a vector by the given amount.\n  function scale(vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  }\n\n\nmodule.exports = {\n    randomVec,\n    scale\n};\n\n//# sourceURL=webpack://asteroids/./src/util.js?");
 
 /***/ })
 
